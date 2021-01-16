@@ -2,7 +2,7 @@ name: WorkFlow-pr-release
 
 on:
   pull_request:
-    types: [merged]
+    types: [closed]
     branches: 
       - 'releases/**'
       - 'master'
@@ -12,8 +12,10 @@ jobs:
   setup:
     name: Setup
     runs-on: ubuntu-latest
+    if: github.head.ref == 'releases'
 
     steps:
+    
 
     - name: Extract branch name
       shell: bash

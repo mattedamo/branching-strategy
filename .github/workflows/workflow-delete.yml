@@ -16,5 +16,5 @@ jobs:
         id: extract_branch
       
       - name: Print branch deleted
-        run: echo "$GITHUB_BASE_REF deleted"
+        run: echo "${{github.base.ref}} deleted"
       

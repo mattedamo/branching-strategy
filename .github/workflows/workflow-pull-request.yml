@@ -1,0 +1,23 @@
+name: WorkFlow-pr-release
+
+on:
+  pull_request:
+    types: [closed]
+    branches: 
+      - 'releases/**'
+
+
+jobs:
+  setup:
+    name: Setup
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Extract branch name
+      shell: bash
+      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+      id: extract_branch
+
+    - run: echo "${{github.base.ref}} pull request triggered"
+    - run: env

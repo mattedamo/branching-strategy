@@ -15,6 +15,9 @@ jobs:
         run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
         id: extract_branch
       
-      - name: Print branch deleted
-        run: echo "${{github.base.ref}} deleted"
+      - run: var
+      
+      - run: echo "${{github.event.ref}} deleted"
+      - run: echo "${GITHUB_REF} deleted"
+      - run: echo "${GITHUB_BASE_REF} deleted"
       

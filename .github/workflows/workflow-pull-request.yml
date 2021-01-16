@@ -12,7 +12,7 @@ jobs:
   setup:
     name: Setup
     runs-on: ubuntu-latest
-    if: github.head_ref == 'releases'
+    if: github.head_ref == 'releases/**'
 
     steps:
     

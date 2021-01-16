@@ -20,4 +20,5 @@ jobs:
       - run: echo "${{github.event.ref}} deleted"
       - run: echo "${GITHUB_REF} deleted"
       - run: echo "${GITHUB_BASE_REF} deleted"
-      
+      - run: echo "${{github.ref}} deleted"
+      - run: echo "${{github.base.ref}} deleted"

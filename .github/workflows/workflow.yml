@@ -16,10 +16,9 @@ jobs:
 
     steps:
     - if:
-        contains('
-          refs/heads/develop
-          refs/heads/features/
-          ', github.ref)
+        contains(
+          github.event.ref
+          , 'features')
       run: echo eureka
     
     

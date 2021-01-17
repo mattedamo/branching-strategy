@@ -24,10 +24,8 @@ jobs:
       - run: |
           git checkout develop
           echo checkout
-          git rebase $${{github.event.ref}}
-          git echo rebased
-          git push origin develop
-          git echo pushed
+          git branch -a
+          ls -a
   setup:
     name: Setup
     runs-on: ubuntu-latest

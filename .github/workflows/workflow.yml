@@ -14,6 +14,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - if:
+        contains('
+          refs/heads/develop
+          refs/heads/features/**
+          ', github.ref)
 
     - name: Extract branch name
       shell: bash

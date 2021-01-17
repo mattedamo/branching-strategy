@@ -22,6 +22,7 @@ jobs:
         with:
           fetch-depth: 0
       - run: |
+          echo ${{github.event.ref}}
           git checkout develop
           git rebase features/111
           git push origin develop

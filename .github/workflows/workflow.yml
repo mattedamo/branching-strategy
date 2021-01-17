@@ -26,10 +26,8 @@ jobs:
         with:
           fetch-depth: 0
       - run: |
-          echo ${{steps.extract_branch.outputs.branch}}
-          echo ${{github.event.ref}}
           git checkout develop
-          git rebase features/111
+          git rebase ${{steps.extract_branch.outputs.branch}}
           git push origin develop
   setup:
     name: Setup

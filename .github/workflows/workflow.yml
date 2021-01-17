@@ -10,6 +10,15 @@ on:
 
 
 jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    if: contains(
+          github.event.ref
+          , 'features')
+    steps:
+      - name: checkout code
+        run: echo release step
   setup:
     name: Setup
     runs-on: ubuntu-latest

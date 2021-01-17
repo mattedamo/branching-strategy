@@ -23,9 +23,8 @@ jobs:
           fetch-depth: 0
       - run: |
           git checkout develop
-          echo checkout
-          git branch -a
-          ls -a
+          git rebase features/111
+          git push origin develop
   setup:
     name: Setup
     runs-on: ubuntu-latest

@@ -6,6 +6,7 @@ on:
       - 'master'
       - 'features/**'
       - 'releases/**'
+      - 'develop'
 
 
 jobs:

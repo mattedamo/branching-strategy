@@ -18,7 +18,13 @@ jobs:
           , 'features')
     steps:
       - name: checkout code
-        run: echo release step
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - run: |
+          git checkout develop
+          git rebase $${{github.event.ref}}
+          git push
   setup:
     name: Setup
     runs-on: ubuntu-latest

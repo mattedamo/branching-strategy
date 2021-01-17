@@ -22,6 +22,16 @@ jobs:
           ', github.ref)
       run: echo eureka
     - if: github.event.ref == releases**
+      run: echo pallaoro
+    
+    - if: github.event.ref == releases/**
+      run: echo pallaoro
+   
+    - if: github.event.ref == releases/*
+      run: echo pallaoro
+  
+    - if: github.event.ref == 'releases/**'
+      run: echo pallaoro
 
     - name: Extract branch name
       shell: bash

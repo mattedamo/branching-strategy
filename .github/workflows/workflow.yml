@@ -17,11 +17,16 @@ jobs:
           github.event.ref
           , 'features')
     steps:
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
       - name: checkout code
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
       - run: |
+          echo ${{steps.extract_branch.outputs.branch}}
           echo ${{github.event.ref}}
           git checkout develop
           git rebase features/111

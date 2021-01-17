@@ -19,6 +19,7 @@ jobs:
           refs/heads/develop
           refs/heads/features/**
           ', github.ref)
+      run: echo eureka
 
     - name: Extract branch name
       shell: bash

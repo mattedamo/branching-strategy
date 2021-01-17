@@ -18,7 +18,7 @@ jobs:
     - if:
         contains('
           refs/heads/develop
-          refs/heads/features/**
+          refs/heads/features/
           ', github.ref)
       run: echo eureka
 

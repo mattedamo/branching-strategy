@@ -16,7 +16,11 @@ jobs:
     runs-on: ubuntu-latest
     if: contains(
           github.event.ref
-          , 'features tannico')
+          , 'features') || 
+        contains(
+          github.event.ref
+          , 'tannico')
+
     steps:
       - name: Extract branch name
         shell: bash

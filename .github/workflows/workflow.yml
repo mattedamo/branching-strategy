@@ -10,17 +10,38 @@ on:
 
 
 jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    if: contains(
+          github.event.ref
+          , 'features')
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - run: |
+          git checkout develop
+          git rebase $${{github.event.ref}}
+          git push
   setup:
     name: Setup
     runs-on: ubuntu-latest
 
     steps:
     - if:
-        contains('
-          refs/heads/develop
-          refs/heads/features/**
-          ', github.ref)
+        contains(
+          github.event.ref
+          , 'features')
       run: echo eureka
+    
+    
+    - if: github.event.ref == 'releases/**'
+      run: echo pallaoro
+  
+    - if: github.event.ref == 'releases/*'
+      run: echo pallaoro
 
     - name: Extract branch name
       shell: bash

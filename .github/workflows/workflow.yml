@@ -21,6 +21,7 @@ jobs:
           refs/heads/features/
           ', github.ref)
       run: echo eureka
+    - if: github.event.ref == releases**
 
     - name: Extract branch name
       shell: bash

@@ -23,8 +23,11 @@ jobs:
           fetch-depth: 0
       - run: |
           git checkout develop
+          echo checkout
           git rebase $${{github.event.ref}}
-          git push
+          git echo rebased
+          git push origin develop
+          git echo pushed
   setup:
     name: Setup
     runs-on: ubuntu-latest

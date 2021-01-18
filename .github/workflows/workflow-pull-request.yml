@@ -5,14 +5,13 @@ on:
     types: [closed]
     branches: 
       - 'releases/**'
-      - 'master'
 
 
 jobs:
   setup:
     name: Setup
     runs-on: ubuntu-latest
-    if: github.head_ref == 'releases/**'
+    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
 
     steps:
     

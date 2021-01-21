@@ -1,13 +1,6 @@
 name: WorkFlow-production
 
-on:
-  push:
-    branches: 
-      - 'master'
-      - 'features/**'
-      - 'releases/**'
-      - 'develop'
-      - 'tannico'
+on: [push, pull_request]
 
 
 jobs:

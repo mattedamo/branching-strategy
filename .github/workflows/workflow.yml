@@ -1,6 +1,10 @@
 name: WorkFlow-production
 
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+    types: closed
+    
 
 
 jobs:

@@ -59,3 +59,10 @@ jobs:
 
     - run: echo "${{steps.extract_branch.outputs.branch}} pushed"
     - run: env
+  complete-workflow:
+     name: complete workflow always but merged pr
+     runs-on: ubuntu-latest
+     if: github.event.pull_request.merged != true
+     steps:
+       - run: echo it has been started
+     

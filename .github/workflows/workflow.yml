@@ -61,5 +61,13 @@ jobs:
      runs-on: ubuntu-latest
      if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
      steps:
+       - run: env
+       - name: Check out code
+         uses: actions/checkout@v2
        
+       - run: rm -f input.yaml
+       - name: Add and commit changes
+         uses: EndBug/add-and-commit@v6
+         with:
+           message: 'sergio di pane'
      

@@ -43,9 +43,24 @@ jobs:
       run: echo eureka
     
     - name: Extract branch name for image
+      if: contains(
+          github.event.ref
+          , 'master')
+      shell: bash
+      run: echo "##[set-output name=branch;]$(echo prod)"
+      id: branch-img-master
+    
+    - name: Extract branch name for image
+      if: contains(
+          github.event.ref
+          , 'features') || contains(
+          github.event.ref
+          , 'releases') 
       shell: bash
       run: echo "##[set-output name=branch;]$(IFS='/' read -r -a array <<< ${GITHUB_REF#refs/heads/} &&  echo ${array[-2]}-${array[-1]})"
-      id: branch-img
+      id: branch-img-not-master
+    
+    
   
     - run: echo ${{steps.branch-img.outputs.branch}}
     

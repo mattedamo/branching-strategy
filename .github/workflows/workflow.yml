@@ -42,6 +42,10 @@ jobs:
           , 'features')
       run: echo eureka
     
+    - name: Extract branch name for image
+      shell: bash
+      run: echo "##[set-output name=branch;]$(echo IFS='/' read -r -a array <<< "/head/andria/features/moma" && x=${array[-2]}-${array[-1]} && echo $x)"
+    
     
     - if: github.event.ref == 'releases/**'
       run: echo pallaoro

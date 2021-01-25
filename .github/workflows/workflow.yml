@@ -62,7 +62,16 @@ jobs:
     
     
   
-    - run: echo ${{steps.branch-img.outputs.branch}}
+    - run: echo ${{steps.branch-img-not-master.outputs.branch}}
+      if: contains(
+          github.event.ref
+          , 'features') || contains(
+          github.event.ref
+          , 'releases') 
+    - run: echo ${{steps.branch-img-master.outputs.branch}}
+      if: contains(
+          github.event.ref
+          , 'master')
     
     
     - if: github.event.ref == 'releases/**'

@@ -44,7 +44,10 @@ jobs:
     
     - name: Extract branch name for image
       shell: bash
-      run: echo "##[set-output name=branch;]$(echo IFS='/' read -r -a array <<< "/head/andria/features/moma" && x=${array[-2]}-${array[-1]} && echo $x)"
+      run: echo "##[set-output name=branch;]$(IFS='/' read -r -a array <<< "/head/andria/features/moma" &&  echo ${array[-2]}-${array[-1]})"
+      id: branch-img
+  
+    - run: echo ${{steps.extract_branch.outputs.branch-img}}
     
     
     - if: github.event.ref == 'releases/**'

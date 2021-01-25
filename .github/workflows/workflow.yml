@@ -47,7 +47,7 @@ jobs:
       run: echo "##[set-output name=branch;]$(IFS='/' read -r -a array <<< "/head/andria/features/moma" &&  echo ${array[-2]}-${array[-1]})"
       id: branch-img
   
-    - run: echo ${{steps.extract_branch.outputs.branch-img}}
+    - run: echo ${{steps.branch-img.outputs.branch}}
     
     
     - if: github.event.ref == 'releases/**'

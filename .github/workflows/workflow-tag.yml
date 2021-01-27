@@ -1,0 +1,30 @@
+name: WorkFlow-delete-branch
+
+on:
+  push:
+    branches: master
+
+jobs:
+  
+  tag:
+    name: tagging master
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
+      
+      - run: env
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git checkout master
+          git git tag -a v1.1.1 HEAD -m "added tag"
+          git push --tags
+      

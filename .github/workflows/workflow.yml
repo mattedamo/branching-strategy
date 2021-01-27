@@ -87,7 +87,7 @@ jobs:
     
     - name: Bump version and push tag
       id: tag_version
-      if: contains(github.event.ref, 'master')
+      if: contains(github.event.ref, 'aaaaa')
       uses: mathieudutour/github-tag-action@v5.1
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}

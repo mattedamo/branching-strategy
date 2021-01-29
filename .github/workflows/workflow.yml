@@ -93,6 +93,12 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
     - run: echo "${{steps.extract_branch.outputs.branch}} pushed"
     - run: env
+    - run: |
+        echo ${{ github.repository-owner }}
+        echo ${{ github.repository.owner }}
+        echo ${{ github-repository-owner }}
+        echo ${{ github.repository_owner }}
+        echo $GITHUB_REPOSITORY_OWNER
   complete-workflow:
      name: complete workflow always but merged pr
      runs-on: ubuntu-latest

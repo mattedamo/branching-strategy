@@ -2,6 +2,7 @@ name: WorkFlow-production
 
 on:
   push:
+    branches: aaaaaa
   pull_request:
     types: closed
     branches: aaaaaa
